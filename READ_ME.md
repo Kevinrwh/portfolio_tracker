@@ -2,8 +2,9 @@ This terminal program allows you to track your balances on different accounts/wa
 
 Main functions
 1. Manually update account balances
-2. Categorize balances
-3. View portfolio
+2. Save balances to a txt file or xls sheet
+3. Categorize balances
+4. View portfolio
 
 Reach goals
 1. Have a ledger of 'net worth'
