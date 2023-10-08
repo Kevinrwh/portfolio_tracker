@@ -1,1 +1,5 @@
-!*.xlsx
+# Ignore Excel files
+*.xls
+*.xlsx
+
+# Add any other patterns or rules as needed
