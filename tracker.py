@@ -75,9 +75,15 @@ def update_port(tracker):
         if response == 'x':
             continue_flag = False
 
-# TODO: Update from the previously created account_data.xlsx spreadsheet
-# Note: If there is no tracker in this working session, we should populate from
-# previous entry. 
+# TODO: Update from the previously created spreadsheet, if there is one
+# TODO: Create a del_account method, which removes an account and its balance
+# After showing the menu, the user is able to choose an action to take
+#     1. Viewing portfolio and balance
+#     2. Updating portfolio (today)
+#     3. Sending to excel (probably not needed, should be auto-done
+# NOTE: When updating from previous data, will need to decide to keep old values or start over each time. 
+# We could assume we want to keep old values.
+# Output(s): Excel file with updated balances
 def main():
 
     # Initialize our tracker and balance
