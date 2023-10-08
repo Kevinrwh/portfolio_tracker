@@ -1,10 +1,10 @@
 This terminal program allows you to track your balances on different accounts/wallets and calculates the total sum.  I was inspired by a spreadsheet I was making on Google sheets that is terribly inefficient. 
 
 Main functions
-1. Manually update account balances
-2. Save balances to a txt file or xls sheet
+1. Manually update account balances -- DONE
+2. Save balances to a txt file or xls sheet -- XLSX DONE
 3. Categorize balances
-4. View portfolio
+4. View portfolio - In XLSX DONE
 
 Reach goals
 1. Have a ledger of 'net worth'

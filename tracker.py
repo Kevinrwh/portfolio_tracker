@@ -1,4 +1,5 @@
 import pandas as pd
+from datetime import date
 
 menu_options = {
     '1.':'Show current portfolio and balance.',
@@ -39,9 +40,9 @@ def update_balance(tracker):
 
     return running_balance
 
-# User wants to update their portfolio. Ask for the category & balance and update in the tracker
+# User wants to update their portfolio. Ask for the account & balance and update in the tracker
 # Input(s): Tracker/Portfolio object
-# Output(s): Updated tracker
+# Output(s): Updated tracker2
 # TODO: Can make this method into multiple smaller validating methods
 def update_port(tracker):
     
@@ -49,22 +50,24 @@ def update_port(tracker):
 
     while continue_flag:
         
-        # Prompt the user for a category & balance
-        # TODO: Validate category is valid
-        category = input('Please enter a category to update:\n').upper()
+        # Prompt the user for an account, balance, and category
+        # TODO: Validate account is valid
+        account = input('Please enter a balance to update:\n').upper()
         # TODO: Validate balance is float
-        balance = input(f'Please enter the balance for {category}:\n')
+        balance = input(f'Please enter the balance for {account}:\n')
+
+        # TODO: Add category functionality. I will need to change dictionary to triplet
 
         # Display the user's entry and verify
         # TODO: Validate response is y or n
-        print(f'You\'ve entered a balance of ${balance} for {category}.')
+        print(f'You\'ve entered a balance of ${balance} for {account}.')
         response = input('Is this correct (Y/N)?\n').lower()
 
-        # If the user verified the category and balance, add the cat-balance kv pair or update the value
-        # if the cat exists already
+        # If the user verified the account and balance, add the acc-balance kv pair or update the value
+        # if the acc exists already
         if response == 'y':
-            # Update/create the value for the category input by the user
-            tracker[category] = int(balance)
+            # Update/create the value for the account input by the user
+            tracker[account] = int(balance)
         
         response = input('Press X to exit or any other key to continue.\n').lower()
         
@@ -105,13 +108,20 @@ def main():
 
         # Send to excel
         elif (response == '3'):
-            # TODO: Send to excel
+
             # Convert the dictionary to a pandas DataFrame
-            df = pd.DataFrame(list(tracker.items()), columns=['Account', 'Integer'])
+            df = pd.DataFrame(list(tracker.items()), columns=['Account', 'Balance'])
+
+            # Add the total balance to the dataframe and concatenate for the final output
+            total_df = pd.DataFrame({'Account': ['Total'], 'Balance': [current_balance]})
+            result_df = pd.concat([df, total_df])
+
             # Specify the output Excel file name
-            output_file = 'account_data.xlsx'
+            today = date.today()
+            output_file = f'{today}.xlsx'
+            
             # Save the DataFrame to an Excel file
-            df.to_excel(output_file, index=False)
+            result_df.to_excel(output_file, index=False)
 
             print('Spreadsheet updated')
 
